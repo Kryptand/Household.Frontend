@@ -19,7 +19,8 @@
       "@household/ingredient": ["libs/ingredient/src/index.ts"],
       "@household/houseplan": ["libs/houseplan/src/index.ts"],
       "@household/services": ["libs/services/src/index.ts"],
-      "@household/cross-cutting": ["libs/cross-cutting/src/index.ts"]
+      "@household/cross-cutting": ["libs/cross-cutting/src/index.ts"],
+      "@household/material": ["libs/material/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

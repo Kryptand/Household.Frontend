@@ -1,19 +1,30 @@
 <div class="grid-container">
-	<h1 class="mat-h1">Zutaten</h1>
-	<button mat-stroked-button color="primary"><mat-icon>add</mat-icon>Neuen Typ hinzufügen</button>
-	<mat-action-list>
-		<ng-container *ngFor="let ingredientType of ingredientTypes$ | async" >
-			<mat-list-item *ngIf="ingredientType.type!==null"> {{ingredientType.type}}
-					<div class="spacer"></div>
-					<button mat-icon-button>
-							<mat-icon aria-label="Edit icon-button with a pencil icon">edit</mat-icon>
-						  </button>
-						  <button (click)="deleteType(ingredientType)" mat-icon-button>
-								<mat-icon aria-label="Delete icon-button with a trashcan icon">delete</mat-icon>
-							  </button>
-			</mat-list-item>
-		</ng-container>
-	</mat-action-list>
-<kryptand-ingredient-type-form-container></kryptand-ingredient-type-form-container>
-  </div>
-  
+  <h1 class="mat-h1">Zutaten</h1>
+  <button mat-stroked-button class="icon-button" (click)="addMode = !addMode" color="primary">
+    <ng-container *ngIf="addMode === false"
+      ><mat-icon>add</mat-icon>Neuen Typ hinzufügen</ng-container
+    >
+    <ng-container *ngIf="addMode === true"
+      ><mat-icon>cancel</mat-icon>Abbrechen</ng-container
+    >
+  </button>
+  <mat-card *ngIf="addMode == true">
+    <kryptand-ingredient-type-form-container (shouldUpdate)="refreshToken$.next(undefined)"></kryptand-ingredient-type-form-container>
+  </mat-card>
+  <mat-card>
+    <mat-action-list>
+      <ng-container *ngFor="let ingredientType of (ingredientTypes$ | async)">
+        <mat-list-item (click)="selectedElement=ingredientType.id"*ngIf="ingredientType.type !== null">
+          {{ ingredientType.type }}
+          <div class="spacer"></div>
+          <button (click)="deleteType(ingredientType)" mat-icon-button>
+            <mat-icon aria-label="Delete icon-button with a trashcan icon"
+              >delete</mat-icon
+            >
+          </button>
+        </mat-list-item>
+      </ng-container>
+    </mat-action-list>
+  </mat-card>
+</div>
+<kryptand-ingredients-container [id]="selectedElement"></kryptand-ingredients-container>

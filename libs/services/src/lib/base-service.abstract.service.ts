@@ -13,7 +13,7 @@ export abstract class AbstractBaseService{
 		return this.httpClient.get<T>(`${this.baseUrl}/${id}`);
 	}
 	public list<T>(...additionalParameterMap:{paramName: string;value:string}[]):Observable<T[]>{
-		let additionalParameters:string;
+		let additionalParameters:string="";
 		if(additionalParameterMap.length){
 			additionalParameterMap.forEach((param,index,arr)=>{
 				if(param.paramName!==null&&param.paramName!==undefined&&param.value!==null&&param.value!==undefined){

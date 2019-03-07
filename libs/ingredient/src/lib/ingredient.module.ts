@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { IngredientService } from './services/ingredient.service';
+import { IngredientTypeService } from './services/ingredient-type.service';
 import { IngredientTypeContainerComponent } from './containers/ingredient-type-container/ingredient-type-container.component';
 import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, MatToolbarModule, MatSidenavModule, MatListModule, MatInputModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -10,8 +10,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IngredientTypeFormComponent } from './components/ingredient-type-form/ingredient-type-form.component';
 import { IngredientTypeFormContainerComponent } from './containers/ingredient-type-form-container/ingredient-type-form-container.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { IngredientService } from './services/ingredient.service';
+import { IngredientsContainerComponent } from './containers/ingredients-container/ingredients-container.component';
 @NgModule({
-  declarations:[IngredientTypeContainerComponent,IngredientTypeFormContainerComponent,IngredientTypeFormComponent],
+  declarations:[IngredientTypeContainerComponent,IngredientsContainerComponent,IngredientTypeFormContainerComponent,IngredientTypeFormComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -32,6 +34,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
       {path: '', pathMatch: 'full', component: IngredientTypeContainerComponent} 
     ])
   ],
-  providers:[IngredientService]
+  providers:[IngredientTypeService,IngredientService]
 })
 export class IngredientModule {}

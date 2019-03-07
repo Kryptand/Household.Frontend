@@ -1,5 +1,5 @@
-import { OnInit,Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { IngredientService } from '../../services/ingredient.service';
+import { OnInit,Component, Input, ChangeDetectionStrategy, EventEmitter, Output } from '@angular/core';
+import { IngredientTypeService } from '../../services/ingredient-type.service';
 import { IngredientType } from '../../models/ingredient-type';
 import { Observable } from 'rxjs';
 import { isNoU } from '@household/cross-cutting';
@@ -12,9 +12,9 @@ import { isNoU } from '@household/cross-cutting';
 export class IngredientTypeFormContainerComponent implements OnInit{
 
 	@Input() id:string;
-	
+	@Output() shouldUpdate:EventEmitter<any>=new EventEmitter();
 	public selectedElement$:Observable<IngredientType>;
-	constructor(private ingredientService:IngredientService){
+	constructor(private ingredientService:IngredientTypeService){
 
   }
   ngOnInit(): void {
@@ -25,9 +25,9 @@ export class IngredientTypeFormContainerComponent implements OnInit{
   saveType(type:IngredientType){
 	isNoU(type,'save-type-ingredient-type');
 	if(this.id!==undefined&&this.id!==null){
-		this.ingredientService.update<IngredientType>(type).subscribe(success=>console.debug(success));
+		this.ingredientService.update<IngredientType>(type).subscribe(_=>this.shouldUpdate.emit(true));
 	  }
-	  this.ingredientService.save<IngredientType>(type).subscribe(success=>console.debug(success));
+	  this.ingredientService.save<IngredientType>(type).subscribe(_=>this.shouldUpdate.emit(true));
   }
 
 }

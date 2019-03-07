@@ -1,10 +1,17 @@
-<form [formGroup]="typeForm" class="type-form">
-  <mat-form-field appearance="outline">
-    <mat-label>Typ</mat-label>
-	<input matInput formControlName="type"  placeholder="Name"/>
-	<mat-error *ngIf="typeInValid===true">Bitte geben Sie einen neuen Lebensmittel Typen an.</mat-error>
-  </mat-form-field>
-		<button mat-stroked-button  disabled (click)="submit()" [disabled]="typeInValid=== true" color="primary">
-    Speichern
-  </button>
-</form>
+<mat-list>
+  <mat-list-item>
+      <form [formGroup]="typeForm" class="type-form">
+        <div class="flex">
+    <mat-form-field  id="input-ingredientType">
+      <mat-label>Typ</mat-label>
+    <input matInput formControlName="type" placeholder="Name"/>
+    <mat-error *ngIf="typeInValid===true">Bitte geben Sie einen neuen Lebensmittel Typen an.</mat-error>
+    </mat-form-field>
+    <div class="spacer"></div>
+    <button disabled (click)="submit()" [disabled]="typeInValid=== true" color="primary" mat-icon-button>
+        <mat-icon aria-label="Delete icon-button with a trashcan icon">save</mat-icon>
+        </button>
+      </div>
+  </form>
+  </mat-list-item>
+</mat-list>

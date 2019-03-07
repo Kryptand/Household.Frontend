@@ -1,5 +1,5 @@
 import { OnInit,Component, Input, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
-import { IngredientService } from '../../services/ingredient.service';
+import { IngredientTypeService } from '../../services/ingredient-type.service';
 import { IngredientType } from '../../models/ingredient-type';
 import { Observable } from 'rxjs';
 import { isNoU } from '@household/cross-cutting';

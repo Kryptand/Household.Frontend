@@ -1,0 +1,13 @@
+<div class="grid-container">
+		<h1 class="mat-h1">Zutaten</h1>
+		<mat-card>
+		  <mat-action-list>
+			<ng-container *ngFor="let ingredient of (ingredients$ | async)">
+			  <mat-list-item *ngIf="ingredient.name !== null">
+				{{ ingredient|json }}
+			  </mat-list-item>
+			</ng-container>
+		  </mat-action-list>
+		</mat-card>
+	  </div>
+	  
