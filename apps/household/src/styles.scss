@@ -14,3 +14,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 		padding-right: 6px;
 	  }
   }
+  .grid-container {
+	margin: 20px;
+  }
+  .mat-list-item.active{
+		background:#dbc8fe!important;
+  }

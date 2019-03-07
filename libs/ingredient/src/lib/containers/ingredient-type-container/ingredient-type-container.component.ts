@@ -14,7 +14,7 @@ export class IngredientTypeContainerComponent implements OnInit{
 
   public addMode=false;
   public ingredientTypes$:Observable<IngredientType[]>;
-  public selectedElement={};
+  public selectedElement;
   public refreshToken$ = new BehaviorSubject(undefined);
 	constructor(private ingredientService:IngredientTypeService){
 

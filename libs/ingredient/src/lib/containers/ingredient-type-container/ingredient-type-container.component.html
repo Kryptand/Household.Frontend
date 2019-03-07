@@ -1,5 +1,5 @@
 <div class="grid-container">
-  <h1 class="mat-h1">Zutaten</h1>
+  <h1 class="mat-h1">Filtern nach Typ</h1>
   <button mat-stroked-button class="icon-button" (click)="addMode = !addMode" color="primary">
     <ng-container *ngIf="addMode === false"
       ><mat-icon>add</mat-icon>Neuen Typ hinzufügen</ng-container
@@ -14,7 +14,7 @@
   <mat-card>
     <mat-action-list>
       <ng-container *ngFor="let ingredientType of (ingredientTypes$ | async)">
-        <mat-list-item (click)="selectedElement=ingredientType.id"*ngIf="ingredientType.type !== null">
+        <mat-list-item [class.active]="ingredientType.id===selectedElement" (click)="selectedElement=ingredientType.id"*ngIf="ingredientType.type !== null">
           {{ ingredientType.type }}
           <div class="spacer"></div>
           <button (click)="deleteType(ingredientType)" mat-icon-button>
@@ -27,4 +27,4 @@
     </mat-action-list>
   </mat-card>
 </div>
-<kryptand-ingredients-container [id]="selectedElement"></kryptand-ingredients-container>
+<kryptand-ingredients-container *ngIf="selectedElement" [id]="selectedElement"></kryptand-ingredients-container>

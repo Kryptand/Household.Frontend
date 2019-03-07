@@ -1,0 +1,17 @@
+<form [formGroup]="searchForm">
+  <div class="flex">
+    <mat-form-field id="input-searchValue">
+      <input autofocus matInput formControlName="searchValue" placeholder="Suchen" />
+    </mat-form-field>
+    <button
+	style="padding-top: 7px;"
+      (click)="search()"
+      color="primary"
+      mat-icon-button
+    >
+      <mat-icon aria-label="Search icon-button with a search icon"
+        >search</mat-icon
+      >
+    </button>
+  </div>
+</form>

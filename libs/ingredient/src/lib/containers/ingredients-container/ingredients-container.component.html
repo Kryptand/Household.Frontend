@@ -1,13 +1,41 @@
 <div class="grid-container">
-		<h1 class="mat-h1">Zutaten</h1>
-		<mat-card>
-		  <mat-action-list>
-			<ng-container *ngFor="let ingredient of (ingredients$ | async)">
-			  <mat-list-item *ngIf="ingredient.name !== null">
-				{{ ingredient|json }}
-			  </mat-list-item>
-			</ng-container>
-		  </mat-action-list>
-		</mat-card>
-	  </div>
-	  
+  <h1 class="mat-h1">Zutaten</h1>
+  <kryptand-searchbar (searchEvent)="search($event)"></kryptand-searchbar>
+
+  <button
+    mat-stroked-button
+    class="icon-button"
+    (click)="addMode = !addMode"
+    color="primary"
+  >
+    <ng-container *ngIf="addMode === false"
+      ><mat-icon>add</mat-icon>Neue Zutat hinzufügen</ng-container
+    >
+    <ng-container *ngIf="addMode === true"
+      ><mat-icon>cancel</mat-icon>Abbrechen</ng-container
+    >
+  </button>
+  <mat-card *ngIf="addMode == true">
+    <kryptand-ingredient-form-container
+      [ingredientTypeId]="id"
+      (shouldUpdate)="refreshToken$.next(undefined)"
+    ></kryptand-ingredient-form-container>
+  </mat-card>
+  <mat-card>
+    <ng-container *ngIf="(ingredients$ | async)?.length">
+      <mat-action-list>
+        <ng-container *ngFor="let ingredient of (ingredients$ | async)">
+          <mat-list-item *ngIf="ingredient.name !== null">
+            {{ ingredient.name }}
+            <div class="spacer"></div>
+            <button (click)="delete(ingredient)" mat-icon-button>
+              <mat-icon aria-label="Delete icon-button with a trashcan icon"
+                >delete</mat-icon
+              >
+            </button>
+          </mat-list-item>
+        </ng-container>
+      </mat-action-list></ng-container
+    >
+  </mat-card>
+</div>

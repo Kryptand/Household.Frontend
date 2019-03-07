@@ -1,0 +1,17 @@
+<mat-list>
+  <mat-list-item>
+      <form [formGroup]="ingredientForm" class="type-form">
+        <div class="flex">
+    <mat-form-field  id="input-ingredientType">
+      <mat-label>Zutat</mat-label>
+    <input matInput formControlName="name" placeholder="Name"/>
+    <mat-error *ngIf="typeInValid===true">Bitte geben Sie einen neue Zutat an.</mat-error>
+    </mat-form-field>
+    <div class="spacer"></div>
+    <button disabled (click)="submit()" [disabled]="typeInValid=== true" color="primary" mat-icon-button>
+        <mat-icon aria-label="save icon-button with a disk icon">save</mat-icon>
+        </button>
+      </div>
+  </form>
+  </mat-list-item>
+</mat-list>

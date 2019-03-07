@@ -5,11 +5,11 @@
       [opened]="!(isHandset$ | async)">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#"><mat-icon aria-label="Home navigation icon">dashboard</mat-icon>Home</a>
-      <a mat-list-item href="#"><mat-icon aria-label="Disposal navigation icon">delete</mat-icon>Abfall</a>
-      <a mat-list-item href="#"><mat-icon aria-label="Houseplan navigation icon">today</mat-icon>Hausplan</a>
-      <a mat-list-item href="#"><mat-icon aria-label="Recipe navigation icon">restaurant_menu</mat-icon>Rezepte</a>
-      <a mat-list-item href="#"><mat-icon aria-label="Zutaten navigation icon">local_grocery_store</mat-icon>Zutaten</a>
+      <a mat-list-item routerLink=""><mat-icon aria-label="Home navigation icon">dashboard</mat-icon>Home</a>
+      <a mat-list-item routerLink="/disposal" routerLinkActive="active"><mat-icon aria-label="Disposal navigation icon">delete</mat-icon>Abfall</a>
+      <a mat-list-item routerLink="/houseplan" routerLinkActive="active"><mat-icon aria-label="Houseplan navigation icon">today</mat-icon>Hausplan</a>
+      <a mat-list-item routerLink="/recipe" routerLinkActive="active"><mat-icon aria-label="Recipe navigation icon">restaurant_menu</mat-icon>Rezepte</a>
+      <a mat-list-item routerLink="/ingredient" routerLinkActive="active"><mat-icon aria-label="Zutaten navigation icon">local_grocery_store</mat-icon>Zutaten</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -22,7 +22,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>household</span>
+      <span>Hauskram</span>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>

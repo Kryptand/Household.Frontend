@@ -1,39 +1,42 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { IngredientTypeService } from './services/ingredient-type.service';
-import { IngredientTypeContainerComponent } from './containers/ingredient-type-container/ingredient-type-container.component';
-import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, MatToolbarModule, MatSidenavModule, MatListModule, MatInputModule } from '@angular/material';
-import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { MaterialModule } from '@household/material';
+import { IngredientFormComponent } from './components/ingredient-form/ingredient-form.component';
 import { IngredientTypeFormComponent } from './components/ingredient-type-form/ingredient-type-form.component';
+import { SearchbarComponent } from './components/search-bar/search-bar.component';
+import { IngredientFormContainerComponent } from './containers/ingredient-form-container/ingredient-form-container.component';
+import { IngredientTypeContainerComponent } from './containers/ingredient-type-container/ingredient-type-container.component';
 import { IngredientTypeFormContainerComponent } from './containers/ingredient-type-form-container/ingredient-type-form-container.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { IngredientService } from './services/ingredient.service';
 import { IngredientsContainerComponent } from './containers/ingredients-container/ingredients-container.component';
+import { IngredientTypeService } from './services/ingredient-type.service';
+import { IngredientService } from './services/ingredient.service';
 @NgModule({
-  declarations:[IngredientTypeContainerComponent,IngredientsContainerComponent,IngredientTypeFormContainerComponent,IngredientTypeFormComponent],
+  declarations: [
+    IngredientTypeContainerComponent,
+    IngredientsContainerComponent,
+    SearchbarComponent,
+    IngredientTypeFormContainerComponent,
+    IngredientFormComponent,
+    IngredientFormContainerComponent,
+    IngredientTypeFormComponent
+  ],
   imports: [
     CommonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatSidenavModule,
+   MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    MatListModule,
     HttpClientModule,
     RouterModule.forChild([
-      {path: '', pathMatch: 'full', component: IngredientTypeContainerComponent} 
+      {
+        path: '',
+        pathMatch: 'full',
+        component: IngredientTypeContainerComponent
+      }
     ])
   ],
-  providers:[IngredientTypeService,IngredientService]
+  providers: [IngredientTypeService, IngredientService]
 })
 export class IngredientModule {}
