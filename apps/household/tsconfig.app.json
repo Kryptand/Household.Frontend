@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc/apps/household",
+    "types": []
+  },
+  "exclude": ["src/test-setup.ts", "**/*.spec.ts"],
+  "include": [
+    "**/*.ts",
+    "../../libs/fridge/src/index.ts",
+    "../../libs/disposal/src/index.ts",
+
+    "../../libs/recipe/src/index.ts",
+
+    "../../libs/ingredient/src/index.ts",
+
+    "../../libs/houseplan/src/index.ts"
+  ]
+}

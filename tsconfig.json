@@ -12,7 +12,15 @@
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2017", "dom"],
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@household/fridge": ["libs/fridge/src/index.ts"],
+      "@household/disposal": ["libs/disposal/src/index.ts"],
+      "@household/recipe": ["libs/recipe/src/index.ts"],
+      "@household/ingredient": ["libs/ingredient/src/index.ts"],
+      "@household/houseplan": ["libs/houseplan/src/index.ts"],
+      "@household/services": ["libs/services/src/index.ts"],
+      "@household/cross-cutting": ["libs/cross-cutting/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

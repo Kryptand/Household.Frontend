@@ -2,14 +2,345 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "",
-  "projects": {},
+  "projects": {
+    "household": {
+      "root": "apps/household/",
+      "sourceRoot": "apps/household/src",
+      "projectType": "application",
+      "prefix": "kryptand",
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/household",
+            "index": "apps/household/src/index.html",
+            "main": "apps/household/src/main.ts",
+            "polyfills": "apps/household/src/polyfills.ts",
+            "tsConfig": "apps/household/tsconfig.app.json",
+            "assets": [
+              "apps/household/src/favicon.ico",
+              "apps/household/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "apps/household/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/household/src/environments/environment.ts",
+                  "with": "apps/household/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ],
+              "serviceWorker": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "household:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "household:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "household:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/household/tsconfig.app.json",
+              "apps/household/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/household/jest.config.js",
+            "tsConfig": "apps/household/tsconfig.spec.json",
+            "setupFile": "apps/household/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "household-e2e": {
+      "root": "apps/household-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/builders:cypress",
+          "options": {
+            "cypressConfig": "apps/household-e2e/cypress.json",
+            "tsConfig": "apps/household-e2e/tsconfig.e2e.json",
+            "devServerTarget": "household:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "household:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/household-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "fridge": {
+      "root": "libs/fridge",
+      "sourceRoot": "libs/fridge/src",
+      "projectType": "library",
+      "prefix": "kryptandd",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/fridge/tsconfig.lib.json",
+              "libs/fridge/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/fridge/jest.config.js",
+            "tsConfig": "libs/fridge/tsconfig.spec.json",
+            "setupFile": "libs/fridge/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "disposal": {
+      "root": "libs/disposal",
+      "sourceRoot": "libs/disposal/src",
+      "projectType": "library",
+      "prefix": "kryptandd",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/disposal/tsconfig.lib.json",
+              "libs/disposal/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/disposal/jest.config.js",
+            "tsConfig": "libs/disposal/tsconfig.spec.json",
+            "setupFile": "libs/disposal/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "recipe": {
+      "root": "libs/recipe",
+      "sourceRoot": "libs/recipe/src",
+      "projectType": "library",
+      "prefix": "kryptandd",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/recipe/tsconfig.lib.json",
+              "libs/recipe/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/recipe/jest.config.js",
+            "tsConfig": "libs/recipe/tsconfig.spec.json",
+            "setupFile": "libs/recipe/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ingredient": {
+      "root": "libs/ingredient",
+      "sourceRoot": "libs/ingredient/src",
+      "projectType": "library",
+      "prefix": "kryptandd",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ingredient/tsconfig.lib.json",
+              "libs/ingredient/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/ingredient/jest.config.js",
+            "tsConfig": "libs/ingredient/tsconfig.spec.json",
+            "setupFile": "libs/ingredient/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "houseplan": {
+      "root": "libs/houseplan",
+      "sourceRoot": "libs/houseplan/src",
+      "projectType": "library",
+      "prefix": "kryptandd",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/houseplan/tsconfig.lib.json",
+              "libs/houseplan/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/houseplan/jest.config.js",
+            "tsConfig": "libs/houseplan/tsconfig.spec.json",
+            "setupFile": "libs/houseplan/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "services": {
+      "root": "libs/services",
+      "sourceRoot": "libs/services/src",
+      "projectType": "library",
+      "prefix": "household",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/services/tsconfig.lib.json",
+              "libs/services/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/services/jest.config.js",
+            "tsConfig": "libs/services/tsconfig.spec.json",
+            "setupFile": "libs/services/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "cross-cutting": {
+      "root": "libs/cross-cutting",
+      "sourceRoot": "libs/cross-cutting/src",
+      "projectType": "library",
+      "prefix": "household",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/cross-cutting/tsconfig.lib.json",
+              "libs/cross-cutting/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/cross-cutting/jest.config.js",
+            "tsConfig": "libs/cross-cutting/tsconfig.spec.json",
+            "setupFile": "libs/cross-cutting/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
+    }
+  },
   "cli": {
     "warnings": {
       "typescriptMismatch": false,
       "versionMismatch": false
     },
     "defaultCollection": "@nrwl/schematics"
-    
   },
-  "schematics": {}
+  "schematics": {},
+  "defaultProject": "household"
 }

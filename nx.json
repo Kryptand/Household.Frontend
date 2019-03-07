@@ -7,5 +7,33 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "household": {
+      "tags": []
+    },
+    "household-e2e": {
+      "tags": []
+    },
+    "fridge": {
+      "tags": []
+    },
+    "disposal": {
+      "tags": []
+    },
+    "recipe": {
+      "tags": []
+    },
+    "ingredient": {
+      "tags": []
+    },
+    "houseplan": {
+      "tags": []
+    },
+    "services": {
+      "tags": []
+    },
+    "cross-cutting": {
+      "tags": []
+    }
+  }
 }

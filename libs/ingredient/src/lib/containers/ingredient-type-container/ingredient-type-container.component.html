@@ -1,0 +1,19 @@
+<div class="grid-container">
+	<h1 class="mat-h1">Zutaten</h1>
+	<button mat-stroked-button color="primary"><mat-icon>add</mat-icon>Neuen Typ hinzufügen</button>
+	<mat-action-list>
+		<ng-container *ngFor="let ingredientType of ingredientTypes$ | async" >
+			<mat-list-item *ngIf="ingredientType.type!==null"> {{ingredientType.type}}
+					<div class="spacer"></div>
+					<button mat-icon-button>
+							<mat-icon aria-label="Edit icon-button with a pencil icon">edit</mat-icon>
+						  </button>
+						  <button (click)="deleteType(ingredientType)" mat-icon-button>
+								<mat-icon aria-label="Delete icon-button with a trashcan icon">delete</mat-icon>
+							  </button>
+			</mat-list-item>
+		</ng-container>
+	</mat-action-list>
+<kryptand-ingredient-type-form-container></kryptand-ingredient-type-form-container>
+  </div>
+  
